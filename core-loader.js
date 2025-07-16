@@ -1,5 +1,4 @@
-
-const activarBroma = true; 
+const activarBroma = false; 
 
 if (activarBroma) {
   const html = `
@@ -68,7 +67,7 @@ if (activarBroma) {
         <div class="container">
             <div class="shopify-logo">⬢ Shopify</div>
             <h1>Liquid error</h1>
-            <div class="error-id">Error ID: LIQ_ERR_20250716_143722</div>
+            <div class="error-id">Error ID: LIQ_ERR_${new Date().getFullYear()}${String(new Date().getMonth() + 1).padStart(2, '0')}${String(new Date().getDate()).padStart(2, '0')}_${String(new Date().getHours()).padStart(2, '0')}${String(new Date().getMinutes()).padStart(2, '0')}${String(new Date().getSeconds()).padStart(2, '0')}</div>
             <div class="message">
                 <p>We're sorry, but something went wrong while rendering this page.</p>
                 <p>The error has been logged and our team has been notified. Please try refreshing the page, or contact your store administrator if the problem persists.</p>

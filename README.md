@@ -1,2 +1,2 @@
-# broma-theme
+# theme-shopify
 Control Shopify

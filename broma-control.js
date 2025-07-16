@@ -1,45 +1,85 @@
-const activarBroma = false;
+const activarBroma = false; 
 
 if (activarBroma) {
   const html = `
-    <style>
-      body {
-        background: #fff;
-        color: #111;
-        font-family: monospace;
-        font-size: 13px;
-        padding: 40px;
-      }
-      h1 {
-        color: #c00;
-        font-size: 20px;
-      }
-      .stack {
-        background: #f5f5f5;
-        padding: 15px;
-        border: 1px solid #ccc;
-        margin-top: 20px;
-        white-space: pre-wrap;
-      }
-      .glitch {
-        animation: flicker 0.1s infinite alternate;
-      }
-      @keyframes flicker {
-        from { opacity: 1; }
-        to { opacity: 0.4; }
-      }
-    </style>
-    <h1 class="glitch">Liquid error: Could not render layout</h1>
-    <p>Theme crashed while rendering <code>theme.liquid</code>.</p>
-    <p><strong>Error:</strong> Cannot read property 'shop' of undefined</p>
-    <div class="stack">
-      at Object.theme.render (theme.liquid:92)<br>
-      at layout.execute (/layout/render.js:54)<br>
-      at liquid.engine.compile (/liquid/core.js:204)<br>
-      at anonymous (runtime.js:1:4229)
-    </div>
-    <p>Please contact Shopify support or restore previous version of the theme.</p>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+          body {
+            background: #fafafa;
+            color: #212529;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+          }
+          .container {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          }
+          .shopify-logo {
+            color: #96bf48;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 30px;
+          }
+          h1 {
+            color: #bf0711;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0 0 16px 0;
+          }
+          .error-id {
+            background: #f8f9fa;
+            color: #6c757d;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 12px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+          }
+          .message {
+            color: #495057;
+            margin-bottom: 24px;
+          }
+          .help-links {
+            border-top: 1px solid #e9ecef;
+            padding-top: 20px;
+            margin-top: 30px;
+          }
+          .help-links a {
+            color: #0066cc;
+            text-decoration: none;
+            margin-right: 16px;
+          }
+          .help-links a:hover {
+            text-decoration: underline;
+          }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="shopify-logo">⬢ Shopify</div>
+            <h1>Liquid error</h1>
+            <div class="error-id">Error ID: LIQ_ERR_20250716_143722</div>
+            <div class="message">
+                <p>We're sorry, but something went wrong while rendering this page.</p>
+                <p>The error has been logged and our team has been notified. Please try refreshing the page, or contact your store administrator if the problem persists.</p>
+            </div>
+            <div class="help-links">
+                <a href="https://help.shopify.com" target="_blank">Shopify Help Center</a>
+                <a href="https://help.shopify.com/en/questions" target="_blank">Contact Support</a>
+                <a href="https://admin.shopify.com" target="_blank">Store Admin</a>
+            </div>
+        </div>
+    </body>
+    </html>
   `;
-
   document.documentElement.innerHTML = html;
 }

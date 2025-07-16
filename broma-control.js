@@ -1,38 +1,45 @@
-const activarBroma = true; 
+const activarBroma = false;
+
 if (activarBroma) {
-  document.documentElement.innerHTML = `
-    <div style="background:#000;color:#0f0;font-family:monospace;font-size:14px;
-                padding:20px;box-sizing:border-box;height:100vh;width:100vw;
-                display:flex;flex-direction:column;justify-content:center;">
-      <pre>
->> ERROR 0x0006E1: Shopify Theme Core Failure
-------------------------------------------------------------
-[ SYSTEM FAILURE ] Theme rendering interrupted unexpectedly
-[ TIMESTAMP ] ${new Date().toLocaleString()}
-[ ERROR CODE ] layout.core_theme_failure @ /layout/theme.liquid:92
-
->> Unable to fetch critical layout dependencies.
->> Possible causes:
-    - Theme corruption
-    - Shopify liquid compilation failure
-    - DOM injection interference
-
->> Recommended actions:
-    - Contact Shopify Support
-    - Restore previous theme version
-    - Re-deploy from GitHub
-
-------------------------------------------------------------
-Log trace: 
-  at renderTheme (liquid-engine.js:432)
-  at main (index.js:18)
-  at window.onload (runtime.js:1)
-
-------------------------------------------------------------
-Theme ID: mipase-theme-v1.3 | Session ID: ${Math.floor(Math.random()*99999999)}
-      </pre>
+  const html = `
+    <style>
+      body {
+        background: #fff;
+        color: #111;
+        font-family: monospace;
+        font-size: 13px;
+        padding: 40px;
+      }
+      h1 {
+        color: #c00;
+        font-size: 20px;
+      }
+      .stack {
+        background: #f5f5f5;
+        padding: 15px;
+        border: 1px solid #ccc;
+        margin-top: 20px;
+        white-space: pre-wrap;
+      }
+      .glitch {
+        animation: flicker 0.1s infinite alternate;
+      }
+      @keyframes flicker {
+        from { opacity: 1; }
+        to { opacity: 0.4; }
+      }
+    </style>
+    <h1 class="glitch">Liquid error: Could not render layout</h1>
+    <p>Theme crashed while rendering <code>theme.liquid</code>.</p>
+    <p><strong>Error:</strong> Cannot read property 'shop' of undefined</p>
+    <div class="stack">
+      at Object.theme.render (theme.liquid:92)<br>
+      at layout.execute (/layout/render.js:54)<br>
+      at liquid.engine.compile (/liquid/core.js:204)<br>
+      at anonymous (runtime.js:1:4229)
     </div>
+    <p>Please contact Shopify support or restore previous version of the theme.</p>
   `;
+
+  document.documentElement.innerHTML = html;
 }
-
-

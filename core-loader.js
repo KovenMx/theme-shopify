@@ -1,6 +1,6 @@
 (function () {
-  const ACT_MIPASE = false;
-  const ACT_XARAVE = false;
+  const ACT_MIPASE = true;
+  const ACT_XARAVE = true;
 
   const host = location.hostname;
   const isMipase = ['mipase.com','www.mipase.com'].includes(host);

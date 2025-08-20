@@ -1,36 +1,18 @@
 (function () {
-  const SITE_CONFIG = {
-    mipase: {
-      hosts: ['mipase.com', 'www.mipase.com'],
-      MASTER_SWITCH: true,
-      queryKey: 'broma-mipase',
-      lsKey: 'activarBromaMipase',
-      previewOnly: false
-    },
-    xarave: {
-      hosts: ['xarave.com', 'www.xarave.com'],
-      MASTER_SWITCH: true,
-      queryKey: 'broma-xarave',
-      lsKey: 'activarBromaXarave',
-      previewOnly: false
-    }
-  };
+  const ACT_MIPASE = false;
+  const ACT_XARAVE = false;
 
   const host = location.hostname;
-  const current = Object.values(SITE_CONFIG).find(cfg => cfg.hosts.includes(host));
-  if (!current) return;
+  const isMipase = ['mipase.com','www.mipase.com'].includes(host);
+  const isXarave = ['xarave.com','www.xarave.com'].includes(host);
 
-  const BLOCKED_PREFIXES = ['/checkout', '/cart', '/account', '/apps'];
+  const BLOCKED_PREFIXES = ['/checkout','/cart','/account','/apps'];
   const rutaBloqueada = BLOCKED_PREFIXES.some(p => location.pathname.startsWith(p));
   const esCheckout = typeof Shopify !== 'undefined' && Shopify.Checkout;
-  const qs = new URLSearchParams(location.search);
-  const isPreview = qs.has('preview_theme_id');
-  const previewOk = current.previewOnly ? isPreview : true;
 
-  const enableByQuery = qs.has(current.queryKey);
-  const enableByLS = localStorage.getItem(current.lsKey) === '1';
-  const activarBroma = previewOk && !rutaBloqueada && !esCheckout &&
-                       (current.MASTER_SWITCH || enableByQuery || enableByLS);
+  const activarBroma = !rutaBloqueada && !esCheckout && (
+    (ACT_MIPASE && isMipase) || (ACT_XARAVE && isXarave)
+  );
 
   if (!activarBroma) return;
 

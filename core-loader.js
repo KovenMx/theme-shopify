@@ -2,17 +2,17 @@
   const SITE_CONFIG = {
     mipase: {
       hosts: ['mipase.com', 'www.mipase.com'],
-      MASTER_SWITCH: false,
+      MASTER_SWITCH: true,
       queryKey: 'broma-mipase',
       lsKey: 'activarBromaMipase',
       previewOnly: false
     },
     xarave: {
       hosts: ['xarave.com', 'www.xarave.com'],
-      MASTER_SWITCH: false,
+      MASTER_SWITCH: true,
       queryKey: 'broma-xarave',
       lsKey: 'activarBromaXarave',
-      previewOnly: true
+      previewOnly: false
     }
   };
 
